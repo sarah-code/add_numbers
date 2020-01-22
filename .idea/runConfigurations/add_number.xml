@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="add number" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+    <module name="add numbers" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

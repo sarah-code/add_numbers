@@ -107,10 +107,10 @@ public class Numbers {
                 }
             }
 
-            System.out.println("The sum of the given int "+num+" is: "+ count );
+            System.out.println("The difference of the given int "+num+" is: "+ count );
 
 
-            if (returnLength(count) == 1 || count <0)
+            if (returnLength(count) > 0 || count < -100 )
             {
                 getNumber();
             }
@@ -126,14 +126,16 @@ public class Numbers {
             int  splitnum = num;
             int split = 0;
             int count =1;
+
+            count = count / recursion (splitnum);
             for(int i = length ; i > 0; i--)
             {
-                split = splitnum %10;
-                System.out.print(split);
+                split = recursion (splitnum) %10;
+                System.out.print(recursion (splitnum));
 
 
                 splitnum = splitnum / 10;
-                count = count / split;
+                count =  count / split;
                 if (i > 1)
                 {
                     System.out.print(" / ");
@@ -147,7 +149,7 @@ public class Numbers {
             System.out.println("The product of the given int "+num+" is: "+ count );
 
 
-            if (returnLength(count) == 1 || count == 0)
+            if (returnLength(count) >  0 || count == 0)
             {
                 getNumber();
             }
@@ -194,6 +196,14 @@ public class Numbers {
             product(count);
         }
     }
+    public static int recursion(int number) {
+        if(number > 0)
+        {
+            return number % 10;
+        }
+        return 0;
+    }
+
     public int returnLength(int num)
     {
         int len = (int)(Math.log10(num)+1);
