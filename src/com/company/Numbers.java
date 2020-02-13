@@ -71,12 +71,13 @@ public class Numbers {
     }
    public void product(int num)
     {
+        String temp[] = splitNumber(num);
         int length = returnLength(num);
-        if (length > 1 || num == 0 || length != 1){
-            int numberInt = 1;
-            String temp[] = splitNumber(num);
-            for (int i = 0; i < temp.length; i++) {
-                if (temp[i] != null) {
+        if (length  !=1 || num != 0){
+            try {
+                int numberInt = 1;
+                for (int i = 0; i < temp.length; i++) {
+
                     System.out.print(temp[i]);
                     if (i != temp.length - 1) {
                         System.out.print(" * ");
@@ -91,11 +92,15 @@ public class Numbers {
                     //                    getNumber();
                     //                }
                 }
-            }
-            System.out.println(numberInt);
 
-            System.out.println("The product of the given int " + num + " is: " + numberInt);
-            product(numberInt);
+                System.out.println(numberInt);
+
+                System.out.println("The product of the given int " + num + " is: " + numberInt);
+                product(numberInt);
+            }catch(Exception e)
+            {
+                getNumber();
+            }
         }else {
             getNumber();
         }
