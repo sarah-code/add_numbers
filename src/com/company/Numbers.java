@@ -49,6 +49,7 @@ public class Numbers  {
     }
     public void sum(int num)
     {
+
         int length = returnLength(num);
         if(length  !=1) {
             int numberInt = 0;
@@ -107,11 +108,24 @@ public class Numbers  {
     }
     public void minus(int num)
     {
+        int numberInt =0;
         int length = returnLength(num);
-        if(length  !=1 || num != -100) {
-            int numberInt = 0;
+        int startIndex = 0;
+        if(length  !=1 ) { //|| num != -100
+
             String temp[] = splitNumber(num);
-            for (int i = 0; i < temp.length; i++) {
+//            for(var elt : temp)
+//            {
+//                System.out.println(elt);
+//            }
+            if (temp[0] == "-")
+            {
+                temp[1] = "-" + temp[1];
+                temp[0] = null;
+                startIndex = 1;
+            }
+            System.out.println(temp[1]);
+            for (int i = startIndex; i < temp.length; i++) {
                 System.out.print(temp[i]);
                 if (i != temp.length - 1) {
                     System.out.print(" - ");
@@ -135,17 +149,17 @@ public class Numbers  {
         return len;
     }
 
-    public String[] splitNumber(int number)
-    {
-        int length =  returnLength(number);
+    public String[] splitNumber(int number) {
+        int length = returnLength(number);
 
         splitnum = Integer.toString(number);
-        split=new String [splitnum.length()];
+        split = new String[splitnum.length()];
 
-        for(int i = 0 ; i < length + 1; i++)
-        {
+        for (int i = 0; i < length + 1; i++) {
             split = splitnum.split("", i);
         }
+
+
         return split;
     }
 }
