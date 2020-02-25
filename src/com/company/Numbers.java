@@ -118,12 +118,10 @@ public class Numbers  {
 //            {
 //                System.out.println(elt);
 //            }
-            if (temp[0] == "-")
-            {
-                temp[1] = "-" + temp[1];
-                temp[0] = null;
-                startIndex = 1;
-            }
+           if(temp[0] == null)
+           {
+               startIndex = 1;
+           }
             System.out.println(temp[1]);
             for (int i = startIndex; i < temp.length; i++) {
                 System.out.print(temp[i]);
@@ -156,9 +154,14 @@ public class Numbers  {
         split = new String[splitnum.length()];
 
         for (int i = 0; i < length + 1; i++) {
-            split = splitnum.split("", i);
+                split = splitnum.split("", i);
         }
+        if (split[0] == "-")
+        {
+            split[1] = "-" + split[1];
+            split[0] = null;
 
+        }
 
         return split;
     }
