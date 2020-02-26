@@ -111,33 +111,45 @@ public class Numbers  {
         int numberInt =0;
         int length = returnLength(num);
         int startIndex = 0;
-        if(length  !=1 ) { //|| num != -100
+        String temp[] = splitNumber(num);
+        try
+        {
+            if(length  !=1 ) { //|| num != -100
 
-            String temp[] = splitNumber(num);
+
 //            for(var elt : temp)
 //            {
 //                System.out.println(elt);
 //            }
-           if(temp[0] == null)
-           {
-               startIndex = 1;
-           }
-            System.out.println(temp[1]);
-            for (int i = startIndex; i < temp.length; i++) {
-                System.out.print(temp[i]);
-                if (i != temp.length - 1) {
-                    System.out.print(" - ");
-                } else {
-                    System.out.print(" = ");
-                }
-                numberInt = numberInt - Integer.parseInt(temp[i]);
-            }
-            System.out.println(numberInt);
 
-            System.out.println("The sum of the given int " + num + " is: " + numberInt);
-            sum(numberInt);
+                if(temp[0] == null)
+                {
+                    startIndex = 1;
+                }
+                System.out.println(temp[0]);
+                System.out.println(temp[1]);
+                for (int i = startIndex; i < temp.length; i++) {
+                    System.out.print(temp[i]);
+                    if (i != temp.length - 1) {
+                        System.out.print(" - ");
+                    } else {
+                        System.out.print(" = ");
+                    }
+                    numberInt = numberInt - Integer.parseInt(temp[i]);
+                }
+                System.out.println(numberInt);
+
+                System.out.println("The sum of the given int " + num + " is: " + numberInt);
+                sum(numberInt);
+            }
+            getNumber();
         }
-        getNumber();
+        catch(Exception e)
+        {
+            System.out.println(e + " occured");
+            System.out.println(temp[0]);
+        }
+
     }
 
     public int returnLength(int num)
@@ -149,19 +161,29 @@ public class Numbers  {
 
     public String[] splitNumber(int number) {
         int length = returnLength(number);
-
-        splitnum = Integer.toString(number);
-        split = new String[splitnum.length()];
-
-        for (int i = 0; i < length + 1; i++) {
-                split = splitnum.split("", i);
-        }
-        if (split[0] == "-")
+        try
         {
-            split[1] = "-" + split[1];
-            split[0] = null;
+
+            splitnum = Integer.toString(number);
+            split = new String[splitnum.length()];
+
+            for (int i = 0; i < length + 1; i++) {
+                split = splitnum.split("", i);
+            }
 
         }
+        catch(Exception e)
+        {
+            System.out.println(e);
+            if (split[0] == "-")
+            {
+                split[1] = "-" + split[1];
+                split[0] = null;
+
+            }
+        }
+
+
 
         return split;
     }
