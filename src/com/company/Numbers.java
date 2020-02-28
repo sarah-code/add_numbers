@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Numbers  {
     private int number;
     private String splitnum;
-    private String split [];
+    private String split;
     private int count;
 
     Scanner scan = new Scanner(System.in);
@@ -36,10 +36,10 @@ public class Numbers  {
 
         switch(descision)
         {
-            case ("s"):
-                sum(num); break;
-            case("p"):
-            product(num); break;
+//            case ("s"):
+//                sum(num); break;
+//            case("p"):
+//            product(num); break;
             case("m"):
                 minus(num); break;
             default:
@@ -47,65 +47,65 @@ public class Numbers  {
                 System.exit(-1);
         }
     }
-    public void sum(int num)
-    {
-
-        int length = returnLength(num);
-        if(length  !=1) {
-            int numberInt = 0;
-            String temp[] = splitNumber(num);
-            for (int i = 0; i < temp.length; i++) {
-                System.out.print(temp[i]);
-                if (i != temp.length - 1) {
-                    System.out.print(" + ");
-                } else {
-                    System.out.print(" = ");
-                }
-                numberInt = numberInt + Integer.parseInt(temp[i]);
-            }
-            System.out.println(numberInt);
-
-            System.out.println("The sum of the given int " + num + " is: " + numberInt);
-            sum(numberInt);
-        }
-        getNumber();
-    }
-   public void product(int num)
-    {
-        String temp[] = splitNumber(num);
-        System.out.println(splitnum);
-        int length = returnLength(num);
-        if (length  !=1 || splitnum != null || splitnum != "0") {
-            try {
-                int numberInt = 1;
-                for (int i = 0; i < temp.length; i++) {
-
-                    System.out.print(temp[i]);
-                    if (i != temp.length - 1) {
-                        System.out.print(" * ");
-                    } else {
-                        System.out.print(" = ");
-                    }
-                    //                try {
-                    numberInt = numberInt * Integer.parseInt(temp[i]);
-                    //                }
-                    //                catch(Exception e)
-                    //                {
-                    //                    getNumber();
-                    //                }
-                }
-
-                System.out.println(numberInt);
-
-                System.out.println("The product of the given int " + num + " is: " + numberInt);
-                product(numberInt);
-            } catch (Exception e) {
-                getNumber();
-
-            }
-            getNumber();
-        }
-    }
+//    public void sum(int num)
+//    {
+//
+//        int length = returnLength(num);
+//        if(length  !=1) {
+//            int numberInt = 0;
+//            String temp[] = splitNumber(num);
+//            for (int i = 0; i < temp.length; i++) {
+//                System.out.print(temp[i]);
+//                if (i != temp.length - 1) {
+//                    System.out.print(" + ");
+//                } else {
+//                    System.out.print(" = ");
+//                }
+//                numberInt = numberInt + Integer.parseInt(temp[i]);
+//            }
+//            System.out.println(numberInt);
+//
+//            System.out.println("The sum of the given int " + num + " is: " + numberInt);
+//            sum(numberInt);
+//        }
+//        getNumber();
+//    }
+//   public void product(int num)
+//    {
+//        String temp[] = splitNumber(num);
+//        System.out.println(splitnum);
+//        int length = returnLength(num);
+//        if (length  !=1 || splitnum != null || splitnum != "0") {
+//            try {
+//                int numberInt = 1;
+//                for (int i = 0; i < temp.length; i++) {
+//
+//                    System.out.print(temp[i]);
+//                    if (i != temp.length - 1) {
+//                        System.out.print(" * ");
+//                    } else {
+//                        System.out.print(" = ");
+//                    }
+//                    //                try {
+//                    numberInt = numberInt * Integer.parseInt(temp[i]);
+//                    //                }
+//                    //                catch(Exception e)
+//                    //                {
+//                    //                    getNumber();
+//                    //                }
+//                }
+//
+//                System.out.println(numberInt);
+//
+//                System.out.println("The product of the given int " + num + " is: " + numberInt);
+//                product(numberInt);
+//            } catch (Exception e) {
+//                getNumber();
+//
+//            }
+//            getNumber();
+//        }
+//    }
     public void minus(int num)
     {
         int numberInt =0;
@@ -113,31 +113,32 @@ public class Numbers  {
         int startIndex = 0;
         if(length  !=1 ) { //|| num != -100
 
-            String temp[] = splitNumber(num);
+            String temp = splitNumber(num);
+
+//            if (temp[0] == "-")
+//            {
+//                temp[1] = "-" + temp[1];
+//                temp[0] = null;
+//                startIndex = 1;
+//            }
+            System.out.println(temp.substring(1));
 //            for(var elt : temp)
 //            {
-//                System.out.println(elt);
+//                System.out.print(elt + ", ");
 //            }
-            if (temp[0] == "-")
-            {
-                temp[1] = "-" + temp[1];
-                temp[0] = null;
-                startIndex = 1;
-            }
-            System.out.println(temp[1]);
-            for (int i = startIndex; i < temp.length; i++) {
-                System.out.print(temp[i]);
-                if (i != temp.length - 1) {
+            for (int i = startIndex; i < temp.length(); i++) {
+                System.out.print(temp.substring(1));
+                if (i != temp.length() - 1) {
                     System.out.print(" - ");
                 } else {
                     System.out.print(" = ");
                 }
-                numberInt = numberInt - Integer.parseInt(temp[i]);
+                numberInt = numberInt - Integer.parseInt(temp.substring(i));
             }
             System.out.println(numberInt);
 
             System.out.println("The sum of the given int " + num + " is: " + numberInt);
-            sum(numberInt);
+            minus(numberInt);
         }
         getNumber();
     }
@@ -149,15 +150,14 @@ public class Numbers  {
         return len;
     }
 
-    public String[] splitNumber(int number) {
+    public String splitNumber(int number) {
         int length = returnLength(number);
 
-        splitnum = Integer.toString(number);
-        split = new String[splitnum.length()];
+        split = String.valueOf(number);
 
-        for (int i = 0; i < length + 1; i++) {
-            split = splitnum.split("", i);
-        }
+//        for (int i = 0; i < length + 1; i++) {
+//            split = splitnum.split("\\D", i);
+//        }
 
 
         return split;
