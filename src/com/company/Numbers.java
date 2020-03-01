@@ -111,9 +111,9 @@ public class Numbers  {
         int numberInt =0;
         int length = returnLength(num);
         int startIndex = 0;
-        if(length  !=1 ) { //|| num != -100
+        if(length  !=1 || num != -100 ) { //|| num != -100
 
-            String temp = splitNumber(num);
+            String temp = String.valueOf(number);
 
 //            if (temp[0] == "-")
 //            {
@@ -122,24 +122,26 @@ public class Numbers  {
 //                startIndex = 1;
 //            }
             System.out.println(temp.substring(1));
+            numberInt =
 //            for(var elt : temp)
 //            {
 //                System.out.print(elt + ", ");
 //            }
             for (int i = startIndex; i < temp.length(); i++) {
-                System.out.print(temp.substring(1));
+                System.out.print(temp.substring(i, i+1));
                 if (i != temp.length() - 1) {
                     System.out.print(" - ");
                 } else {
                     System.out.print(" = ");
                 }
-                numberInt = numberInt - Integer.parseInt(temp.substring(i));
+                numberInt = numberInt - Integer.parseInt(temp.substring(i, i+1));
             }
             System.out.println(numberInt);
 
             System.out.println("The sum of the given int " + num + " is: " + numberInt);
             minus(numberInt);
         }
+
         getNumber();
     }
 
