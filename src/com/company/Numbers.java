@@ -111,30 +111,35 @@ public class Numbers  {
         int numberInt =0;
         int length = returnLength(num);
         int startIndex = 0;
+        String temp = null;
         if(length  !=1 || num != -100 ) { //|| num != -100
 
-            String temp = String.valueOf(number);
+            if (num > 0)
+            {
+                temp = String.valueOf(number);
+            }
+            else if (num < 0)
+            {
+                temp = String.valueOf(Math.abs(number));
+                startIndex = 2;
+                int tempvar = Integer.parseInt(temp.substring(0,1))*-1;
+                numberInt = tempvar;
+            }
 
-//            if (temp[0] == "-")
-//            {
-//                temp[1] = "-" + temp[1];
-//                temp[0] = null;
-//                startIndex = 1;
-//            }
-            System.out.println(temp.substring(1));
-            numberInt =
-//            for(var elt : temp)
-//            {
-//                System.out.print(elt + ", ");
-//            }
-            for (int i = startIndex; i < temp.length(); i++) {
+
+
+
+
+            for (int i = startIndex; i < length; i++) {
                 System.out.print(temp.substring(i, i+1));
+
                 if (i != temp.length() - 1) {
                     System.out.print(" - ");
                 } else {
                     System.out.print(" = ");
                 }
-                numberInt = numberInt - Integer.parseInt(temp.substring(i, i+1));
+                int parsedval = Integer.parseInt(temp.substring(i, i+1));
+                numberInt = numberInt - parsedval;
             }
             System.out.println(numberInt);
 
