@@ -116,15 +116,20 @@ public class Numbers  {
 
             if (num > 0)
             {
-                temp = String.valueOf(number);
+                temp = String.valueOf(num);
+                numberInt = Integer.parseInt(String.valueOf(temp.charAt(0)));
+                length--;
+                temp = temp.substring(1,temp.length());
             }
             else if (num < 0)
             {
-                temp = String.valueOf(Math.abs(number));
+                temp = String.valueOf(Math.abs(num));
                 startIndex = 2;
-                int tempvar = Integer.parseInt(temp.substring(0,1))*-1;
+                int tempvar = Integer.parseInt(temp.substring(0,1));
+                System.out.println("Tempvar:"+tempvar);
                 numberInt = tempvar;
             }
+            System.out.println("Length:"+length+"Temp:"+temp.length());
             for (int i = startIndex; i < length; i++) {
                 System.out.print(temp.substring(i, i+1));
 
@@ -133,7 +138,8 @@ public class Numbers  {
                 } else {
                     System.out.print(" = ");
                 }
-                int parsedVal = Integer.parseInt(temp.substring(i, i+1));
+                int parsedVal = Integer.parseInt(temp.substring(i, i+1)); //is good
+                System.out.println("Calc:"+ numberInt+"-"+parsedVal+"="+(numberInt-parsedVal));
                 numberInt = numberInt - parsedVal;
             }
             System.out.println("Result: "+ numberInt);
@@ -147,9 +153,8 @@ public class Numbers  {
 
     public int returnLength(int num)
     {
-        int len = (int)(Math.log10(num)+1);
-
-        return len;
+//        int len = (int)(Math.log10(num)+1);
+        return (""+Math.abs(num)).length();
     }
 
     public String splitNumber(int number) {
