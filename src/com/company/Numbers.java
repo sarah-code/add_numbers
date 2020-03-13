@@ -112,7 +112,7 @@ public class Numbers  {
         int length = returnLength(num);
         int startIndex = 0;
         String temp = null;
-        if(length  <= 1 || num != -100 ) { //|| num != -100
+        while(length  >= 1 || num != -100 ) { //|| num != -100
 
             if (num > 0)
             {
@@ -125,11 +125,11 @@ public class Numbers  {
             {
                 temp = String.valueOf(Math.abs(num));
                 startIndex = 2;
-                int tempvar = Integer.parseInt(temp.substring(0,1));
+                int tempvar = - Integer.parseInt(temp.substring(0,1));
                 System.out.println("Tempvar:"+tempvar);
                 numberInt = tempvar;
             }
-            System.out.println("Length:"+length+"Temp:"+temp.length());
+//            System.out.println("Length:"+length+"Temp:"+temp.length());
             for (int i = startIndex; i < length; i++) {
                 System.out.print(temp.substring(i, i+1));
 
@@ -139,13 +139,13 @@ public class Numbers  {
                     System.out.print(" = ");
                 }
                 int parsedVal = Integer.parseInt(temp.substring(i, i+1)); //is good
-                System.out.println("Calc:"+ numberInt+"-"+parsedVal+"="+(numberInt-parsedVal));
+//                System.out.println("Calc:"+ numberInt+"-"+parsedVal+"="+(numberInt-parsedVal));
                 numberInt = numberInt - parsedVal;
             }
             System.out.println("Result: "+ numberInt);
 
             System.out.println("The sum of the given int " + num + " is: " + numberInt);
-            minus(numberInt);
+            returnLength(numberInt);
         }
 
         getNumber();
